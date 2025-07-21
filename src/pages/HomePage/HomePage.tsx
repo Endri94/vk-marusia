@@ -4,7 +4,7 @@ import { getTop10Movies, getRandomMovie } from '../../api/api'
 import { RandomMovieBanner } from '../../components/RandomMovieBanner/RandomMovieBanner'
 import { MovieCard } from '../../components/MovieCard/MovieCard'
 import type { Movie } from '../../types'
-import './HomePage.css'
+import './Homepage.css'
 
 const HomePage = () => {
     const [movies, setMovies] = useState<Movie[]>([])
