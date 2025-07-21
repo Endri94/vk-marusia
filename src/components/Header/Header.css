@@ -1,0 +1,231 @@
+/* Основные стили хедера */
+.header {
+    padding: 24px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 0 80px 0 rgba(255, 255, 255, 1.5);
+    backdrop-filter: blur(20px);
+}
+
+.container {
+    max-width: 1280px;
+    /* width: 100%; */
+    padding: 0 20px;
+    margin: 0 auto;
+}
+
+.header-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+/* Логотип */
+
+
+.header__logo-icon {
+    height: 32px;
+    width: auto;
+}
+
+/* Основная навигация */
+.header__nav {
+    display: flex;
+    gap: 40px;
+}
+
+.header__link {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.2s ease;
+    position: relative;
+    padding: 8px 0;
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 133%;
+    color: #fff;
+    transition: all 0.3s ease-in-out;
+}
+
+.header__link:hover {
+    color: rgb(161, 161, 161);
+}
+
+.header__link--active {
+    color: white;
+}
+
+.header__link--active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #dc5dfc;
+}
+
+/* Поле поиска */
+.header__search-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 655px;
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+    background: #393b3c;
+}
+
+.header__search-loop {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+}
+
+.header__search-input {
+    width: 100%;
+    padding: 10px 36px 10px 36px;
+    background: transparent;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-size: 14px;
+}
+
+.header__search-input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.header__search-input:focus {
+    outline: 1px solid rgba(69, 104, 246, 0.5);
+}
+
+.header__link--user {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 24px;
+    text-transform: uppercase;
+    line-height: 133%;
+    color: #fff;
+}
+
+/* Кнопка входа */
+.header__login-button {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 24px;
+    border: none;
+    padding: 0;
+    line-height: 133%;
+    opacity: 1;
+    color: #fff;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.header__login-button:hover {
+    opacity: 0.8;
+}
+
+/* Мобильные иконки */
+.header__mobile-icons {
+    display: none;
+    gap: 20px;
+}
+
+.mobile-icon--search {
+    padding: 0;
+    background-color: transparent;
+    border: none;
+}
+
+.mobile-icon--active img {
+    opacity: 1;
+}
+
+.mobile-icon--active {
+    border: none;
+    background-color: transparent;
+}
+
+.header__mobile-icons img {
+    width: 24px;
+    height: 24px;
+    opacity: 0.6;
+    transition: opacity 0.2s ease;
+}
+
+.mobile-icon--profile {
+    padding: 0;
+    background-color: transparent;
+    border: none;
+}
+
+.header__mobile-icons img:hover {
+    opacity: 1;
+}
+
+.header__search-clear {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+    user-select: none;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+}
+
+.header__search-clear:hover {
+    opacity: 1;
+}
+
+
+
+/* Адаптив */
+@media (max-width: 1024px) {
+    .header__search-wrapper {
+        display: none;
+        /* Скрываем поиск в шапке на мобилках */
+    }
+
+    .header__nav,
+    .header__search-wrapper,
+    .header__login-button,
+    .header__link--user,
+    .header__user-name {
+        display: none;
+    }
+
+    .header__left {
+        margin-right: 0;
+    }
+
+    .header__mobile-icons {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .header__mobile-icons {
+        gap: 16px;
+    }
+}

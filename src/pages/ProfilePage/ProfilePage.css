@@ -1,0 +1,193 @@
+.profile-page {
+    padding-top: 30px;
+}
+
+.profile-title {
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 117%;
+    color: #fff;
+    margin-bottom: 64px;
+}
+
+.profile-tabs {
+    display: flex;
+    gap: 64px;
+    margin-bottom: 64px;
+}
+
+.profile-tabs button {
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 133%;
+    color: #fff;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+}
+
+.profile-tabs .active {
+    border-color: #dc5dfc;
+}
+
+.profile-tabs__title--mobile {
+    display: none;
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 24px;
+    margin: 0;
+    line-height: 133%;
+    color: #fff;
+}
+
+.favorites-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.favorite-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.favorite-info h3 {
+    margin: 0 0 4px;
+}
+
+.remove-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: auto;
+}
+
+.profile-user-blocks {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.profile-user-block {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.profile-user-info {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.profile-user-initials {
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.5);
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 133%;
+    color: #fff;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+}
+
+.profile-user-texts {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.profile-user-texts h3 {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 133%;
+    color: #fff;
+    margin: 0;
+}
+
+.profile-user-texts p {
+    margin: 0;
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 133%;
+    color: #fff;
+}
+
+.logout-btn {
+    margin-top: 64px;
+    padding: 16px 48px;
+    border: none;
+    border-radius: 28px;
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 133%;
+    color: #fff;
+    background: #67a5eb;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    outline: none;
+}
+
+.logout-btn:hover {
+    color: rgba(255, 255, 255, 0.5);
+    background: #45526e;
+}
+
+.logout-btn:focus {
+    color: #000;
+    background: #fff;
+}
+
+@media(max-width: 576px) {
+    .profile-title {
+        font-size: 30px;
+    }
+
+    .profile-tabs button {
+        gap: 6px;
+        font-size: 14px;
+    }
+
+    .profile-user-texts h3 {
+        font-size: 14px;
+        line-height: 143%;
+    }
+
+    .profile-user-texts p {
+        font-size: 15px;
+        line-height: 133%;
+    }
+
+    .profile-tabs__title--mobile {
+        display: block;
+        font-size: 20px;
+    }
+
+    .profile-tabs__title {
+        display: none;
+    }
+
+    .profile-tabs {
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+
+}

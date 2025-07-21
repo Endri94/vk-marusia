@@ -1,0 +1,146 @@
+.search-loading-fallback {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px;
+}
+
+/* Карточка-заглушка */
+.search-skeleton-item {
+    display: flex;
+    gap: 16px;
+    background: #222;
+    padding: 12px;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    animation: pulse 1.6s ease-in-out infinite;
+}
+
+/* Пульсация фона */
+@keyframes pulse {
+
+    0%,
+    100% {
+        background-color: #222;
+    }
+
+    50% {
+        background-color: #2a2a2a;
+    }
+}
+
+/* Постер */
+.skeleton-poster {
+    width: 70px;
+    height: 105px;
+    border-radius: 5px;
+    background: #333;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Детали */
+.skeleton-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+}
+
+/* Заголовок */
+.skeleton-title {
+    width: 60%;
+    height: 18px;
+    border-radius: 4px;
+    background: #333;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Метаинформация */
+.skeleton-meta {
+    display: flex;
+    gap: 10px;
+    margin-top: 4px;
+}
+
+/* Круглый рейтинг */
+.skeleton-rating {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #333;
+}
+
+/* Год */
+.skeleton-year {
+    width: 40px;
+    height: 14px;
+    border-radius: 4px;
+    background: #333;
+}
+
+/* Жанры */
+.skeleton-genres {
+    width: 80px;
+    height: 14px;
+    border-radius: 4px;
+    background: #333;
+}
+
+/* Шайнинг эффект - "скользящий свет" */
+.shimmer::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150px;
+    bottom: 0;
+    width: 150px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+    animation: shimmer 1.6s infinite;
+    border-radius: 8px;
+    pointer-events: none;
+}
+
+/* Добавляем shimmer к каждому элементу с классом shimmer */
+.search-skeleton-item.shimmer>*,
+.skeleton-poster.shimmer,
+.skeleton-title.shimmer,
+.skeleton-meta.shimmer,
+.skeleton-rating.shimmer,
+.skeleton-year.shimmer,
+.skeleton-genres.shimmer {
+    position: relative;
+    overflow: hidden;
+}
+
+.search-skeleton-item.shimmer>*::after,
+.skeleton-poster.shimmer::after,
+.skeleton-title.shimmer::after,
+.skeleton-meta.shimmer::after,
+.skeleton-rating.shimmer::after,
+.skeleton-year.shimmer::after,
+.skeleton-genres.shimmer::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150px;
+    bottom: 0;
+    width: 150px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+    animation: shimmer 1.6s infinite;
+    border-radius: 8px;
+    pointer-events: none;
+}
+
+@keyframes shimmer {
+    0% {
+        left: -150px;
+    }
+
+    100% {
+        left: 100%;
+    }
+}

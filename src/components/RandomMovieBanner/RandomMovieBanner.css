@@ -1,0 +1,241 @@
+.banner__content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+
+.banner__info {
+    display: flex;
+    max-width: 600px;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.banner__meta {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    padding-top: 12px;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 133%;
+    color: rgba(255, 255, 255, 0.7);
+    font-family: var(--font-family);
+}
+
+.banner__title {
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 117%;
+    margin: 0;
+    color: #fff;
+    font-family: var(--font-family);
+}
+
+.banner__description {
+    max-width: 600px;
+    width: 100%;
+    max-height: 292px;
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 24px;
+    margin: 0;
+    line-height: 133%;
+    color: rgba(255, 255, 255, 0.7);
+    overflow: hidden;
+    -webkit-line-clamp: 8;
+    text-overflow: ellipsis;
+}
+
+.banner__buttons {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.banner__btn {
+    padding: 16px 48px;
+    border-radius: 28px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 133%;
+    transition: all 0.3s ease-in-out;
+    border: none;
+    background: #393b3c;
+    color: #fff;
+    font-family: var(--font-family);
+}
+
+.banner__btn:hover {
+    background: #67a5eb;
+}
+
+.banner__btn--primary {
+    background: #67a5eb;
+    color: white;
+}
+
+.banner__btn--primary:hover {
+    background: #45526e;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.banner__btn--secondary {
+    background: #393b3c;
+}
+
+.banner__btn--secondary:hover {
+    color: rgba(255, 255, 255, 0.5);
+    background: #747474;
+}
+
+.banner__btn--secondary:focus {
+    color: #000;
+    background: #fff;
+}
+
+.heart-icon {
+    width: 24px;
+    height: 24px;
+    color: transparent;
+    transition: all 0.3s ease-in-out;
+}
+
+.heart-icon path {
+    stroke: #ffffff;
+    transition: all 0.3s ease-in-out;
+
+}
+
+/* Активное состояние (добавлено в избранное) */
+.banner__btn--favorite.active {
+    background: #131718;
+    border-color: transparent;
+}
+
+.banner__btn--favorite.active .heart-icon {
+    color: rgb(180, 0, 0);
+    transition: all 0.3s ease-in-out;
+}
+
+.banner__btn--favorite.active .heart-icon path {
+    stroke: #000;
+    transition: all 0.3s ease-in-out;
+}
+
+
+.banner__btn--icon {
+    width: 68px;
+    height: 56px;
+    padding: 0;
+    background: #1f2937;
+    border-radius: 30px;
+    border: 1px solid transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.banner__image {
+    max-width: 680px;
+    height: 552px;
+    width: 100%;
+}
+
+.banner__image img {
+    object-fit: cover;
+    height: 100%;
+    display: block;
+    width: 100%;
+    border-radius: 16px;
+}
+
+/* Responsive */
+
+@media(max-width: 960px) {
+
+    .banner__description {
+        max-width: unset;
+    }
+
+    .banner__content {
+        display: flex;
+        justify-content: center;
+        flex-direction: column-reverse;
+        gap: 24px;
+    }
+
+    .banner__info {
+        padding: 0 20px;
+        max-width: unset;
+    }
+
+    .banner__image {
+        max-width: unset;
+    }
+}
+
+@media (max-width: 690px) {
+
+
+    .banner__title {
+        font-size: 24px;
+    }
+
+    .banner__description {
+        font-size: 18px;
+    }
+
+    .banner__buttons {
+        margin-top: 32px;
+        justify-content: center;
+        gap: 24px;
+    }
+
+    .banner__btn--primary {
+        display: block;
+        width: 100%;
+    }
+
+    .banner__btn {
+        width: 100%;
+    }
+
+    .banner__btn--icon {
+        width: 68px;
+    }
+}
+
+@media(max-width: 480px) {
+    .banner__image {
+        height: 224px;
+    }
+
+    .banner__meta {
+        font-size: 14px;
+        gap: 10px;
+    }
+
+    .banner__title {
+        font-size: 20px;
+    }
+
+    .banner__description {
+        font-size: 14px;
+    }
+
+    .banner__buttons {
+        margin-top: 0px;
+        gap: 16px;
+    }
+}

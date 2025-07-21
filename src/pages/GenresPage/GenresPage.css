@@ -1,0 +1,36 @@
+.genres-page {
+    padding-top: 30px;
+}
+
+.genres-title {
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 117%;
+    color: #fff;
+    margin-bottom: 64px;
+}
+
+
+.genres-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 64px 40px;
+}
+
+@media(max-width: 768px) {
+    .genres-list {
+        grid-template-columns: repeat(auto-fill, minmax(290px, 335px));
+        justify-content: center;
+    }
+}
+
+@media(max-width: 576px) {
+    .genres-title {
+        font-size: 36px;
+    }
+
+    .genres-list {
+        gap: 30px;
+    }
+}

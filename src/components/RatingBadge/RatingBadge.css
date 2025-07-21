@@ -1,0 +1,37 @@
+.rating {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 12px;
+    border-radius: 16px;
+}
+
+.rating-text {
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 133%;
+    color: #fff;
+}
+
+.rating img {
+    width: 16px;
+    height: 16px;
+}
+
+/* Цвета */
+.rating--gold {
+    background-color: #d9a200;
+}
+
+.rating--green {
+    background-color: #22c55e;
+}
+
+.rating--gray {
+    background-color: #6b7280;
+}
+
+.rating--red {
+    background-color: #dc2626;
+}
