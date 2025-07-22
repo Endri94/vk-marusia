@@ -1,11 +1,13 @@
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
-import { Layout } from './components/Layout/Layout';
 import { LoadingFallback } from './components/LoadingFallback/LoadingFallback';
+import { AnimatePresence } from 'framer-motion';
+import { BackToTop } from './components/BackToTop/BackToTop';
+import { Header } from './components/Header/Header';
+import { Footer } from './components/Footer/Footer';
 import { useAuth } from './context/useAuth';
 import AuthModal from './components/AuthModal/AuthModal';
-import { AnimatePresence, motion } from 'framer-motion';
-import { BackToTop } from './components/BackToTop/BackToTop';
+import { Layout } from './components/Layout/Layout';
 
 const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
 const GenresPage = lazy(() => import('./pages/GenresPage/GenresPage'));
@@ -13,15 +15,6 @@ const GenrePage = lazy(() => import('./pages/GenrePage/GenrePage'));
 const ProfilePage = lazy(() => import('./pages/ProfilePage/ProfilePage'));
 const MoviePage = lazy(() => import('./pages/MoviePage/MoviePage'));
 
-const pageVariants = {
-  initial: { opacity: 0, y: 10 },
-  animate: { opacity: 1, y: 0 },
-  exit: { opacity: 0, y: -10 },
-};
-
-const pageTransition = {
-  duration: 0.3,
-};
 
 function App() {
   const { isAuthModalOpen, closeAuthModal } = useAuth();
@@ -29,109 +22,70 @@ function App() {
 
   return (
     <>
+      <Header />
       <Suspense fallback={<LoadingFallback />}>
-        <AnimatePresence mode='sync' initial={false}>
-          <Routes location={location} key={location.pathname}>
+        <AnimatePresence mode="popLayout" initial={false}>
+          <Routes location={location}>
             <Route
+              path="/"
               element={
-                <Layout />
+                <Layout>
+                  <HomePage />
+                </Layout>
               }
-            >
-              <Route
-                index
-                element={
-                  <motion.div
-                    variants={pageVariants}
-                    initial="initial"
-                    animate="animate"
-                    exit="exit"
-                    transition={pageTransition}
-                  >
-                    <HomePage />
-                  </motion.div>
-                }
-              />
-              <Route
-                path="/genres"
-                element={
-                  <motion.div
-                    variants={pageVariants}
-                    initial="initial"
-                    animate="animate"
-                    exit="exit"
-                    transition={pageTransition}
-                  >
-                    <GenresPage />
-                  </motion.div>
-                }
-              />
-              <Route
-                path="/genre/:key"
-                element={
-                  <motion.div
-                    variants={pageVariants}
-                    initial="initial"
-                    animate="animate"
-                    exit="exit"
-                    transition={pageTransition}
-                  >
-                    <GenrePage />
-                  </motion.div>
-                }
-              />
-              <Route
-                path="/profile"
-                element={
-                  <motion.div
-                    variants={pageVariants}
-                    initial="initial"
-                    animate="animate"
-                    exit="exit"
-                    transition={pageTransition}
-                  >
-                    <ProfilePage />
-                  </motion.div>
-                }
-              />
-              <Route
-                path="/movie/:id"
-                element={
-                  <motion.div
-                    variants={pageVariants}
-                    initial="initial"
-                    animate="animate"
-                    exit="exit"
-                    transition={pageTransition}
-                  >
-                    <MoviePage />
-                  </motion.div>
-                }
-              />
-            </Route>
+            />
+            <Route
+              path="/genres"
+              element={
+                <Layout>
+                  <GenresPage />
+                </Layout>
+              }
+            />
+            <Route
+              path="/genre/:key"
+              element={
+                <Layout>
+                  <GenrePage />
+                </Layout>
+              }
+            />
+            <Route
+              path="/profile"
+              element={
+                <Layout>
+                  <ProfilePage />
+                </Layout>
+              }
+            />
+            <Route
+              path="/movie/:id"
+              element={
+                <Layout>
+                  <MoviePage />
+                </Layout>
+              }
+            />
             <Route
               path="*"
               element={
-                <motion.div
-                  variants={pageVariants}
-                  initial="initial"
-                  animate="animate"
-                  exit="exit"
-                  transition={pageTransition}
-                  style={{ padding: 20 }}
-                >
-                  404 | Not Found
-                </motion.div>
+                <Layout>
+                  <p>
+                    404 | Not Found
+                  </p>
+
+                </Layout>
               }
             />
           </Routes>
         </AnimatePresence>
       </Suspense>
+      <Footer />
       <BackToTop />
-
-      {/* Глобальный модал авторизации */}
       <AuthModal isOpen={isAuthModalOpen} onClose={closeAuthModal} />
     </>
   );
 }
+
 
 export default App;

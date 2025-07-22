@@ -1,35 +1,41 @@
-import { Outlet } from 'react-router-dom';
-import { Header } from '../Header/Header';
-import { Footer } from '../Footer/Footer';
+// components/Layout/PageWrapper.tsx
 import { useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
-import { AuthProvider } from '../../context/AuthProvider';
-import { useAuth } from '../../context/useAuth';
-import AuthModal from '../AuthModal/AuthModal'; 
+import { motion } from 'framer-motion';
 import './Layout.css';
-const LayoutContent = () => {
-    const location = useLocation(); // вызов один раз
-    const { isAuthModalOpen, closeAuthModal } = useAuth();
+
+const pageVariants = {
+    initial: { opacity: 0, y: 10 },
+    animate: { opacity: 1, y: 0 },
+    exit: { opacity: 0, y: -10 },
+};
+
+const pageTransition = {
+    duration: 0.3,
+};
+
+export const Layout = ({ children }: { children: React.ReactNode }) => {
+    const location = useLocation();
 
     useEffect(() => {
         window.scrollTo(0, 0);
-    }, [location.pathname]); // в зависимости кладём конкретное поле
+    }, [location.pathname]);
 
     return (
         <div className="layout">
-            <Header />
             <main id="main-content" className="layout__content" tabIndex={-1}>
-                <Outlet />
+                <motion.div
+                    variants={pageVariants}
+                    initial="initial"
+                    animate="animate"
+                    exit="exit"
+                    transition={pageTransition}
+                >
+                    {children}
+                </motion.div>
             </main>
-            <Footer />
-            {isAuthModalOpen && <AuthModal isOpen={isAuthModalOpen} onClose={closeAuthModal} />}
         </div>
     );
 };
-export const Layout = () => {
-    return (
-        <AuthProvider>
-            <LayoutContent />
-        </AuthProvider>
-    );
-};
+
+export default Layout

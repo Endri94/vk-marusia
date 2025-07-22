@@ -44,7 +44,7 @@ export const MoviePage = () => {
     if (!movie) {
         return <div className="movie-page__error">Фильм не найден</div>;
     }
-   
+
     return (
         <section className="movie-page">
             <RandomMovieBanner movie={movie} hideRandomizeButton></RandomMovieBanner>

@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import './MovieCard.css';
 import type { Movie } from '../../types';
 import { useNavigate } from 'react-router-dom';
@@ -20,6 +20,7 @@ const areEqual = (prevProps: Props, nextProps: Props) =>
 
 export const MovieCard = React.memo(({ movie, variant = 'default', index, onRemove }: Props) => {
     const navigate = useNavigate();
+    const [isImageLoaded, setIsImageLoaded] = useState(false);
 
     const handleClick = useCallback(() => {
         navigate(`/movie/${movie.id}`);
@@ -29,6 +30,11 @@ export const MovieCard = React.memo(({ movie, variant = 'default', index, onRemo
         const target = e.currentTarget;
         target.src = NoPosterImage;
         target.onerror = null;
+        setIsImageLoaded(true); // убрать лоадер, если картинка не загрузилась
+    }, []);
+
+    const handleImageLoad = useCallback(() => {
+        setIsImageLoaded(true);
     }, []);
 
     const onRemoveClick = useCallback(
@@ -54,13 +60,25 @@ export const MovieCard = React.memo(({ movie, variant = 'default', index, onRemo
         >
             {variant === 'top' && typeof index === 'number' && <div className="movie-card__index">{index + 1}</div>}
 
+            {!isImageLoaded && (
+                <div className="movie-card__loader" aria-label="Загрузка изображения">
+                    <div className="curve-bars-spinner">
+                        <div></div>
+                        <div className="reverse"></div>
+                        <div></div>
+                        <div className="reverse"></div>
+                    </div>
+                </div>
+            )}
+
             <img
-                className="movie-card__image"
+                className={`movie-card__image ${isImageLoaded ? 'loaded' : 'hidden'}`}
                 src={imageUrl}
                 alt={`Постер фильма "${movie.title}"`}
                 onError={handleImageError}
-                loading="lazy"
-                decoding="async"
+                onLoad={handleImageLoad}
+                loading='lazy'
+                decoding='async'
             />
             {onRemove && (
                 <button

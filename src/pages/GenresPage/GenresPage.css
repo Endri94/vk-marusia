@@ -16,6 +16,22 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
     gap: 64px 40px;
+    will-change: transform, opacity;
+}
+
+/* Скелетоны */
+.genre-skeleton {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    border-radius: 8px;
+    aspect-ratio: 2/3;
+    animation: shimmer 1.5s infinite linear;
+}
+
+@keyframes shimmer {
+    to {
+        background-position: -200% 0;
+    }
 }
 
 @media(max-width: 768px) {

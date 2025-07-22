@@ -54,6 +54,31 @@
     text-overflow: ellipsis;
 }
 
+/* Обёртка картинки — позиционируем относительно для абсолютного лоудера */
+.banner__image {
+    position: relative;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    border-radius: 16px;
+}
+
+
+/* Лоудер поверх картинки, центрируем по горизонтали и вертикали */
+.banner__image-loader {
+    position: absolute;
+    inset: 0;
+    /* top:0; right:0; bottom:0; left:0; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255 255 255 / 0.1);
+    /* лёгкий полупрозрачный фон, можно убрать/подкорректировать */
+    z-index: 10;
+    pointer-events: none;
+    /* чтобы клики проходили */
+}
+
 .banner__buttons {
     margin-top: auto;
     display: flex;
@@ -238,4 +263,13 @@
         margin-top: 0px;
         gap: 16px;
     }
+}
+
+.banner__image-img {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.banner__image-img.loaded {
+    opacity: 1;
 }
