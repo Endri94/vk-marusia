@@ -43,7 +43,7 @@ const HomePage = () => {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.5 }}
+                transition={{ duration: 2 }}
             >
                 <div className="home__banner">
                     {randomMovie && (
@@ -56,7 +56,7 @@ const HomePage = () => {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.5 }}
+                    transition={{ duration: 2 }}
                 >
                     <h2 className="home__top-title">Топ 10 фильмов</h2>
                     <AnimatePresence>
@@ -65,7 +65,7 @@ const HomePage = () => {
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -10 }}
-                            transition={{ duration: 0.5 }}
+                            transition={{ duration: 2 }}
                         >
                             {movies.map((movie, index) => (
                                 <MovieCard

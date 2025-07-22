@@ -48,7 +48,7 @@ const GenresPage = () => {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 2 }}
         >
             <h1 className="genres-title">Жанры фильмов</h1>
             <motion.div className="genres-list"

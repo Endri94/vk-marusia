@@ -9,6 +9,7 @@ import { useAuth } from '../../context/useAuth';
 import { addFavoriteMovie, getFavoriteMovies } from '../../api/api';
 import { useEffect, useState, useCallback, useMemo } from 'react';
 import TrailerModal from '../TrailerModal/TrailerModal';
+import { easeInOut, motion } from 'framer-motion';
 
 type Props = {
     movie: Movie;
@@ -82,8 +83,21 @@ export const RandomMovieBanner = ({ movie, onRandomize, hideRandomizeButton }: P
     const openTrailer = useCallback(() => setIsTrailerOpen(true), []);
     const closeTrailer = useCallback(() => setIsTrailerOpen(false), []);
 
+    // Добавим варианты анимации
+    const fadeInVariants = {
+        hidden: { opacity: 0, y: 20 },
+        visible: { opacity: 1, y: 0, transition: { duration: 2, ease: easeInOut } },
+    };
     return (
-        <section className="banner" aria-label={`Информация о фильме ${movie.title}`}>
+        <motion.section
+            className="banner"
+            aria-label={`Информация о фильме ${movie.title}`}
+            initial="hidden"
+            animate="visible"
+            variants={fadeInVariants}
+            // Можно добавить exit, если будешь анимировать уход
+            exit="hidden"
+        >
             <div className="banner__content">
                 <div className="banner__info">
                     <div className="banner__meta">
@@ -162,6 +176,6 @@ export const RandomMovieBanner = ({ movie, onRandomize, hideRandomizeButton }: P
             {isTrailerOpen && (
                 <TrailerModal youtubeId={movie.trailerYouTubeId} title={movie.title} onClose={closeTrailer} />
             )}
-        </section>
+        </motion.section>
     );
 };
