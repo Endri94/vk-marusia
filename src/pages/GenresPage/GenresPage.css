@@ -36,7 +36,7 @@
 
 @media(max-width: 768px) {
     .genres-list {
-        grid-template-columns: repeat(auto-fill, minmax(290px, 335px));
+        grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
         justify-content: center;
     }
 }

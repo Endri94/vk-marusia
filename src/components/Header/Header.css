@@ -4,8 +4,8 @@
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 0 80px 0 rgba(255, 255, 255, 1.5);
-    backdrop-filter: blur(20px);
+    box-shadow: 0 0 80px 0 rgba(255, 255, 255, 1);
+    backdrop-filter: blur(10px);
 }
 
 .container {
@@ -41,7 +41,6 @@
     font-size: 15px;
     font-weight: 500;
     text-decoration: none;
-    transition: color 0.2s ease;
     position: relative;
     padding: 8px 0;
     font-family: var(--font-family);
@@ -52,23 +51,33 @@
     transition: all 0.3s ease-in-out;
 }
 
-.header__link:hover {
-    color: rgb(161, 161, 161);
-}
-
-.header__link--active {
-    color: white;
-}
-
-.header__link--active::after {
+.header__link::after {
     content: '';
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
     height: 2px;
+    width: 0;
     background: #dc5dfc;
+    transition: all 0.3s ease-in-out;
 }
+
+.header__link:hover {
+    color: rgb(161, 161, 161);
+}
+
+.header__link--active {
+    color: white;
+    transition: all 0.3s ease-in-out;
+
+}
+
+.header__link--active::after {
+    width: 100%;
+    transition: all 0.3s ease-in-out;
+}
+
 
 /* Поле поиска */
 .header__search-wrapper {
@@ -198,7 +207,7 @@
 
 
 /* Адаптив */
-@media (max-width: 1024px) {
+@media (max-width: 1180px) {
     .header__search-wrapper {
         display: none;
         /* Скрываем поиск в шапке на мобилках */

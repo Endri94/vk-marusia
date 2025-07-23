@@ -33,3 +33,9 @@
     text-align: center;
     color: #fff;
 }
+
+@media(max-width: 1024px) {
+    .genre-card {
+        max-width: unset;
+    }
+}
