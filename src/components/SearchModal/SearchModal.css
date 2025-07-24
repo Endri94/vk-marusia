@@ -31,11 +31,12 @@
 .search-modal-header input {
     width: 92%;
     padding: 12px 18px 12px 36px;
-    border-radius: 4px;
+    border-radius: 10px;
     border: none;
     background: #393b3c;
     color: white;
     font-size: 16px;
+    outline: none;
 }
 
 .search-modal-search {
@@ -90,11 +91,14 @@
     padding: 20px;
     text-align: center;
     color: #aaa;
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 24px;
 }
 
 .search-loading {
-   display: block;
-   margin: 0 auto;
+    display: block;
+    margin: 0 auto;
 }
 
 .search-result-item {
@@ -212,5 +216,10 @@
     .search-modal-close {
         top: 10px;
         right: 2px;
+    }
+
+    .search-loading,
+    .search-empty {
+        font-size: 12px;
     }
 }

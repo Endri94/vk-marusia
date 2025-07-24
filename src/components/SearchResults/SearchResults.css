@@ -29,6 +29,9 @@
     padding: 20px;
     text-align: center;
     color: #aaa;
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 24px;
 }
 
 .search-dropdown-item:hover {

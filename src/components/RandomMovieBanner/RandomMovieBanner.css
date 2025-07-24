@@ -185,6 +185,25 @@
     border-radius: 16px;
 }
 
+.banner__image-img {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    animation: FloatToLeave 5s linear alternate;
+}
+
+.banner__image-img.loaded {
+    opacity: 1;
+}
+
+@keyframes FloatToLeave {
+    0% {
+        transform: translate(0%, 100%);
+    }
+    100% {
+        transform: translate(0%, 0%);
+    }
+}
+
 /* Responsive */
 
 @media(max-width: 960px) {
@@ -263,13 +282,4 @@
         margin-top: 0px;
         gap: 16px;
     }
-}
-
-.banner__image-img {
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-}
-
-.banner__image-img.loaded {
-    opacity: 1;
 }

@@ -3,20 +3,21 @@
     flex-direction: column;
     overflow: hidden;
     border-radius: 16px;
+    border: 1px solid transparent;
     box-shadow: 0 0 24px rgba(255, 255, 255, 0.2);
     text-decoration: none;
     max-width: 335px;
     width: 100%;
     height: 304px;
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease-in-out;
 }
 
 .genre-card:hover {
-    transform: translateY(-4px);
+    border-color: cadetblue;
 }
 
 .genre-card__image {
-    height: 240px;
+    height: 100%;
     background-size: cover;
     background-position: center;
     border-top-left-radius: 16px;
@@ -32,4 +33,10 @@
     line-height: 133%;
     text-align: center;
     color: #fff;
+}
+
+@media(max-width: 1024px) {
+    .genre-card {
+        max-width: unset;
+    }
 }
